@@ -26,7 +26,7 @@ class CommentClient
     public function getComments(): array
     {
         $request = $this->requestFactory
-            ->createRequest('GET', 'api/comments')
+            ->createRequest('GET', 'comments')
             ->withHeader('Content-Type', 'application/json');
         $response = $this->httpClient->sendRequest($request);
 
@@ -47,7 +47,7 @@ class CommentClient
     public function createComment(CommentDTO $comment): CommentDTO
     {
         $request = $this->requestFactory
-            ->createRequest('POST', 'api/comment')
+            ->createRequest('POST', 'comment')
             ->withHeader('Content-Type', 'application/json')
             ->withBody($this->requestFactory->createStream(json_encode($comment)));
 
@@ -65,7 +65,7 @@ class CommentClient
     public function updateComment(CommentDTO $comment): CommentDTO
     {
         $request = $this->requestFactory
-            ->createRequest('PUT', "api/comment/{$comment->id}")
+            ->createRequest('PUT', "comment/{$comment->id}")
             ->withHeader('Content-Type', 'application/json')
             ->withBody($this->requestFactory->createStream(json_encode($comment)));
 
